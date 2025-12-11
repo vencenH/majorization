@@ -139,14 +139,47 @@
         .btn:hover {
             background: #eaeaea;
         }
+
+        #lightboxCounter {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #lightboxFilename {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .description-title {
+            display: block;
+            background: #e8f1ff;
+            border-left: 5px solid #3b82f6;
+            padding: 10px 12px;
+            margin: 30px 0 15px;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a2b4c;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <h1>修改項目清單（自動偵測圖片 + 輪播）</h1>
-        <strong>說明：</strong>PTFIT網站修改，<a href="https://pt2.icisco.com.tw/coach/register" target="_blank">連結頁面</a>。
+        <h1>調整項目清單</h1>
+
+        <strong class="description-title">說明01：[PTFIT網站]教練註冊頁面，<a href="https://pt2.icisco.com.tw/coach/register"
+                target="_blank">連結頁面</a>。</strong>
         <ul class="task-list" id="taskList">
 
             <!--  001  -->
@@ -155,8 +188,8 @@
                 <input type="checkbox" class="task-checkbox">
                 <div class="task-content">
                     <div class="task-title">過去服務單位</div>
-                    <div class="task-note">1.ICON按鈕放大 ， [+號] icon按鈕 與 [垃圾桶] 需要放大 </div>
-                    <div class="task-note">2.至今checkbox會掉下來 </div>
+                    <div class="task-note">1.ICON按鈕放大 ， [+號] icon按鈕 與 [垃圾桶] 需要放大。 </div>
+                    <div class="task-note">2.至今checkbox會掉下來。 </div>
 
                     <div class="show-images-btn">查看圖片</div>
                 </div>
@@ -166,15 +199,47 @@
                 <div class="task-index"></div>
                 <input type="checkbox" class="task-checkbox">
                 <div class="task-content">
-                    <div class="task-title">欄位對齊調整</div>
-                    <div class="task-note">讓 Past Company 欄位左右一致。</div>
+                    <div class="task-title">直接點擊送出申請按鈕，會看到所有必填欄位警示</div>
+                    <div class="task-note">可能需要協助查看/修改這個頁面必填位置(高度間距是否正常)，以及會不會影響到其他項目畫面，對這塊你們可能會比較敏銳，謝謝。</div>
 
                     <div class="show-images-btn">查看圖片</div>
                 </div>
             </li>
 
-            <!-- 複製上面區塊就能新增更多任務 -->
+
+            <li class="task-item">
+                <div class="task-index"></div>
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <div class="task-title">訓練專長(多選)</div>
+                    <div class="task-note">原本為單層改為多層結構，有跑版再請協助。</div>
+
+                    <div class="show-images-btn">查看圖片</div>
+                </div>
+            </li>
+
+
         </ul>
+
+
+        <strong class="description-title">說明02：[PTFIT網站]教練內頁頁面，<a href="https://pt2.icisco.com.tw/pt-class/kuma"
+                class="task-list" target="_blank">連結頁面</a>。</strong>
+
+        <ul class="task-list" id="taskList">
+            <!--  004  -->
+            <li class="task-item">
+                <div class="task-index"></div>
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <div class="task-title">教練內頁</div>
+                    <div class="task-note">輪播圖旁邊的課程類型，如果品項多會掉行文字會裁到</div>
+
+                    <div class="show-images-btn">查看圖片</div>
+                </div>
+            </li>
+
+        </ul>
+
 
         <button class="btn" id="resetBtn">清除所有紀錄</button>
 
@@ -188,9 +253,9 @@
             <div class="lightbox-btn" id="nextBtn">›</div>
         </div>
         <img id="lightboxImage">
+        <div id="lightboxCounter"></div>
+        <div id="lightboxFilename"></div>
     </div>
-
-
 
 </body>
 
@@ -284,6 +349,8 @@
         currentIndex = start;
         document.getElementById("lightboxImage").src = currentImages[currentIndex];
         document.getElementById("lightbox").style.display = "flex";
+        updateCounter();
+        updateFilename();
     }
 
     function closeLightbox() {
@@ -293,14 +360,33 @@
     function showPrev() {
         currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
         document.getElementById("lightboxImage").src = currentImages[currentIndex];
+
+        updateCounter();
+        updateFilename();
     }
 
     function showNext() {
         currentIndex = (currentIndex + 1) % currentImages.length;
         document.getElementById("lightboxImage").src = currentImages[currentIndex];
+
+        updateCounter();
+        updateFilename();
+    }
+    /* ---------------------- 初始化 ---------------------- */
+
+    function updateCounter() {
+        const counter = document.getElementById("lightboxCounter");
+        counter.textContent = (currentIndex + 1) + " / " + currentImages.length;
     }
 
-    /* ---------------------- 初始化 ---------------------- */
+    function updateFilename() {
+        const filenameBox = document.getElementById("lightboxFilename");
+        const fullPath = currentImages[currentIndex];
+
+        const filename = fullPath.split("/").pop(); // 抓取檔名
+        filenameBox.textContent = filename;
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
 
         autoIndex();
