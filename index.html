@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改項目清單</title>
+    <meta name="robots" content="noindex,nofollow">
+
+
+    <style>
+        /* 基本樣式 */
+        body {
+            font-family: "Microsoft JhengHei";
+            background: #f4f4f4;
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 24px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-item {
+            display: flex;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .task-index {
+            width: 50px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .task-checkbox {
+            transform: scale(1.2);
+            margin-top: 4px;
+        }
+
+        .task-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .show-images-btn {
+            margin-top: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            background: #e6e6e6;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .show-images-btn:hover {
+            background: #dcdcdc;
+        }
+
+        .completed {
+            background: #e8f7e8;
+            border-color: #9fd39f;
+        }
+
+        .completed .task-title {
+            text-decoration: line-through;
+            color: #4b8a4b;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 6px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-controls {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            pointer-events: none;
+        }
+
+        .lightbox-btn {
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            pointer-events: auto;
+            user-select: none;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f8f8f8;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #eaeaea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>修改項目清單（自動偵測圖片 + 輪播）</h1>
+        <strong>說明：</strong>PTFIT網站修改，<a href="https://pt2.icisco.com.tw/coach/register" target="_blank">連結頁面</a>。
+        <ul class="task-list" id="taskList">
+
+            <!--  001  -->
+            <li class="task-item">
+                <div class="task-index"></div>
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <div class="task-title">過去服務單位</div>
+                    <div class="task-note">1.ICON按鈕放大 ， [+號] icon按鈕 與 [垃圾桶] 需要放大 </div>
+                    <div class="task-note">2.至今checkbox會掉下來 </div>
+
+                    <div class="show-images-btn">查看圖片</div>
+                </div>
+            </li>
+
+            <li class="task-item">
+                <div class="task-index"></div>
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <div class="task-title">欄位對齊調整</div>
+                    <div class="task-note">讓 Past Company 欄位左右一致。</div>
+
+                    <div class="show-images-btn">查看圖片</div>
+                </div>
+            </li>
+
+            <!-- 複製上面區塊就能新增更多任務 -->
+        </ul>
+
+        <button class="btn" id="resetBtn">清除所有紀錄</button>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <div class="lightbox-close">×</div>
+        <div class="lightbox-controls">
+            <div class="lightbox-btn" id="prevBtn">‹</div>
+            <div class="lightbox-btn" id="nextBtn">›</div>
+        </div>
+        <img id="lightboxImage">
+    </div>
+
+
+
+</body>
+
+</html>
+
+
+
+<script>
+    /* 自動序號 */
+    function autoIndex() {
+        document.querySelectorAll(".task-item").forEach((item, i) => {
+            item.querySelector(".task-index").textContent =
+                String(i + 1).padStart(3, "0");
+        });
+    }
+
+    /* 儲存勾選狀態 */
+    const STORAGE_KEY = "modify_tasks_local";
+
+    function saveStatus() {
+        const arr = [];
+        document.querySelectorAll(".task-checkbox").forEach(cb => {
+            arr.push(cb.checked ? 1 : 0);
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+        updateUI();
+    }
+
+    function loadStatus() {
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (!data) return;
+        const arr = JSON.parse(data);
+        document.querySelectorAll(".task-checkbox").forEach((cb, i) => {
+            cb.checked = arr[i] === 1;
+        });
+        updateUI();
+    }
+
+    function updateUI() {
+        document.querySelectorAll(".task-item").forEach(item => {
+            const cb = item.querySelector(".task-checkbox");
+            item.classList.toggle("completed", cb.checked);
+        });
+    }
+
+    function resetAll() {
+        localStorage.removeItem(STORAGE_KEY);
+        document.querySelectorAll(".task-checkbox").forEach(cb => cb.checked = false);
+        updateUI();
+    }
+
+    /* ---------------------- 自動偵測圖片 ---------------------- */
+    /* 檢查圖片是否存在 */
+    function checkImageExists(url) {
+        return fetch(url, { method: "HEAD" }).then(res => res.ok).catch(() => false);
+    }
+
+    /* 依序尋找圖片（最多10張） */
+    async function loadImagesForTask(index) {
+        const prefix = String(index + 1).padStart(3, "0"); // 001
+        const exts = ["jpg", "png", "jpeg"];
+        const maxCount = 10;
+
+        const images = [];
+
+        for (let i = 1; i <= maxCount; i++) {
+            let found = false;
+
+            for (let ext of exts) {
+                const path = `img/${prefix}-${i}.${ext}`;
+                const ok = await checkImageExists(path);
+                if (ok) {
+                    images.push(path);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) break; // 該序號沒有更多圖片
+        }
+
+        return images;
+    }
+
+    /* ---------------------- Lightbox ---------------------- */
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(images, start = 0) {
+        currentImages = images;
+        currentIndex = start;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+        document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+    }
+
+    /* ---------------------- 初始化 ---------------------- */
+    document.addEventListener("DOMContentLoaded", async () => {
+
+        autoIndex();
+        loadStatus();
+
+        document.querySelectorAll(".task-checkbox").forEach(cb => {
+            cb.addEventListener("change", saveStatus);
+        });
+
+        const items = document.querySelectorAll(".task-item");
+        const btns = document.querySelectorAll(".show-images-btn");
+
+        btns.forEach((btn, index) => {
+            btn.addEventListener("click", async () => {
+                const imgs = await loadImagesForTask(index);
+                if (imgs.length > 0) {
+                    openLightbox(imgs);
+                }
+            });
+
+            /* 若該項目沒有圖片 → 隱藏按鈕 */
+            loadImagesForTask(index).then(imgs => {
+                if (imgs.length === 0) btn.style.display = "none";
+            });
+        });
+
+        document.getElementById("resetBtn").onclick = resetAll;
+        document.querySelector(".lightbox-close").onclick = closeLightbox;
+        document.getElementById("prevBtn").onclick = showPrev;
+        document.getElementById("nextBtn").onclick = showNext;
+
+        document.getElementById("lightbox").onclick = e => {
+            if (e.target.id === "lightbox") closeLightbox();
+        };
+
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+        });
+    });
+</script>
