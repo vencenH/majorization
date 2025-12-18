@@ -1,0 +1,239 @@
+ /* 基本樣式 */
+ body {
+     font-family: "Microsoft JhengHei";
+     background: #f4f4f4;
+     margin: 0;
+     padding: 24px;
+ }
+
+ .container {
+     max-width: 900px;
+     margin: auto;
+     background: #fff;
+     padding: 24px 28px;
+     border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ .task-list {
+     list-style: none;
+     padding: 0;
+ }
+
+ /* HTML 標記完成（給所有人看） */
+ .task-item[data-status="done"] {
+     background: #f0fdf4;
+     border-color: #86efac;
+ }
+
+ .task-item[data-status="done"] .task-title {
+     text-decoration: line-through;
+     color: #15803d;
+ }
+
+ .task-item {
+     display: flex;
+     padding: 14px;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     background: #fafafa;
+     margin-bottom: 10px;
+     gap: 10px;
+ }
+
+ .task-index {
+     width: 50px;
+     font-weight: bold;
+     font-size: 14px;
+ }
+
+ .task-checkbox {
+     transform: scale(1.2);
+     margin-top: 4px;
+ }
+
+ .task-title {
+     font-weight: bold;
+     margin-bottom: 4px;
+ }
+
+ .show-images-btn {
+     margin-top: 6px;
+     padding: 4px 10px;
+     font-size: 12px;
+     border-radius: 4px;
+     background: #e6e6e6;
+     border: 1px solid #ccc;
+     cursor: pointer;
+     display: inline-block;
+ }
+
+ .show-images-btn:hover {
+     background: #dcdcdc;
+ }
+
+ .completed {
+     background: #e8f7e8;
+     border-color: #9fd39f;
+ }
+
+ .completed .task-title {
+     text-decoration: line-through;
+     color: #4b8a4b;
+ }
+
+ /* Lightbox */
+ #lightbox {
+     display: none;
+     position: fixed;
+     inset: 0;
+     background: rgba(0, 0, 0, 0.85);
+     justify-content: center;
+     align-items: center;
+     z-index: 9999;
+ }
+
+ #lightbox img {
+     max-width: 90%;
+     max-height: 80vh;
+     border-radius: 6px;
+     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+ }
+
+ .lightbox-controls {
+     position: absolute;
+     width: 100%;
+     top: 50%;
+     transform: translateY(-50%);
+     display: flex;
+     justify-content: space-between;
+     padding: 0 40px;
+     pointer-events: none;
+ }
+
+ .lightbox-btn {
+     font-size: 40px;
+     color: white;
+     cursor: pointer;
+     pointer-events: auto;
+     user-select: none;
+ }
+
+ .lightbox-close {
+     position: absolute;
+     top: 20px;
+     right: 30px;
+     color: white;
+     cursor: pointer;
+     font-size: 30px;
+ }
+
+ .btn {
+     padding: 6px 12px;
+     border-radius: 4px;
+     border: 1px solid #ccc;
+     cursor: pointer;
+     background: #f8f8f8;
+     margin-top: 10px;
+ }
+
+ .btn:hover {
+     background: #eaeaea;
+ }
+
+ #lightboxCounter {
+     position: absolute;
+     bottom: 40px;
+     width: 100%;
+     text-align: center;
+     color: white;
+     font-size: 16px;
+     font-weight: bold;
+ }
+
+ #lightboxFilename {
+     position: absolute;
+     bottom: 10px;
+     width: 100%;
+     text-align: center;
+     color: #ddd;
+     font-size: 14px;
+ }
+
+ .description-title {
+     display: block;
+     background: #e8f1ff;
+     border-left: 5px solid #3b82f6;
+     padding: 10px 12px;
+     margin: 30px 0 15px;
+     border-radius: 4px;
+     font-size: 18px;
+     font-weight: bold;
+     color: #1a2b4c;
+ }
+
+ /* Tabs content 顯示控制 */
+ .tab-content {
+     display: none;
+ }
+
+ .tab-content.active {
+     display: block;
+ }
+
+ .tabs {
+     display: flex;
+     gap: 24px;
+     margin: 12px 0 28px;
+     border-bottom: 1px solid #e5e7eb;
+ }
+
+ .tab {
+     position: relative;
+     padding: 8px 2px 12px;
+     font-size: 15px;
+     font-weight: 500;
+     color: #6b7280;
+     /* gray-500 */
+     text-decoration: none;
+     cursor: pointer;
+     transition: color .2s ease;
+ }
+
+ .tab:hover {
+     color: #1f2937;
+     /* gray-800 */
+ }
+
+ /* Active tab */
+ .tab.active {
+     color: #2563eb;
+     /* blue-600 */
+     font-weight: 600;
+ }
+
+ /* 底線動畫 */
+ .tab::after {
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: -1px;
+     width: 0;
+     height: 3px;
+     background: #2563eb;
+     border-radius: 3px 3px 0 0;
+     transition: width .25s ease;
+ }
+
+ .tab.active::after {
+     width: 100%;
+ }
+
+ /* tab-content 顯示控制（如果你還沒加） */
+ .tab-content {
+     display: none;
+ }
+
+ .tab-content.active {
+     display: block;
+ }

@@ -5,172 +5,7 @@
     <meta charset="UTF-8">
     <title>修改項目清單</title>
     <meta name="robots" content="noindex,nofollow">
-
-
-    <style>
-        /* 基本樣式 */
-        body {
-            font-family: "Microsoft JhengHei";
-            background: #f4f4f4;
-            margin: 0;
-            padding: 24px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 24px 28px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .task-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .task-item {
-            display: flex;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            background: #fafafa;
-            margin-bottom: 10px;
-            gap: 10px;
-        }
-
-        .task-index {
-            width: 50px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .task-checkbox {
-            transform: scale(1.2);
-            margin-top: 4px;
-        }
-
-        .task-title {
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .show-images-btn {
-            margin-top: 6px;
-            padding: 4px 10px;
-            font-size: 12px;
-            border-radius: 4px;
-            background: #e6e6e6;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .show-images-btn:hover {
-            background: #dcdcdc;
-        }
-
-        .completed {
-            background: #e8f7e8;
-            border-color: #9fd39f;
-        }
-
-        .completed .task-title {
-            text-decoration: line-through;
-            color: #4b8a4b;
-        }
-
-        /* Lightbox */
-        #lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 80vh;
-            border-radius: 6px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-controls {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 40px;
-            pointer-events: none;
-        }
-
-        .lightbox-btn {
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-            pointer-events: auto;
-            user-select: none;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            cursor: pointer;
-            font-size: 30px;
-        }
-
-        .btn {
-            padding: 6px 12px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            background: #f8f8f8;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background: #eaeaea;
-        }
-
-        #lightboxCounter {
-            position: absolute;
-            bottom: 40px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        #lightboxFilename {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            color: #ddd;
-            font-size: 14px;
-        }
-
-        .description-title {
-            display: block;
-            background: #e8f1ff;
-            border-left: 5px solid #3b82f6;
-            padding: 10px 12px;
-            margin: 30px 0 15px;
-            border-radius: 4px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1a2b4c;
-        }
-    </style>
+    <link rel="stylesheet" href="css/fix.css" />
 </head>
 
 <body>
@@ -178,86 +13,118 @@
     <div class="container">
         <h1>調整項目清單</h1>
 
-        <strong class="description-title">說明01：[PTFIT網站]教練註冊頁面，<a href="https://pt2.icisco.com.tw/coach/register"
-                target="_blank">連結頁面</a>。</strong>
-        <ul class="task-list" id="taskList">
 
-            <!--  001  -->
-            <li class="task-item">
-                <div class="task-index"></div>
-                <input type="checkbox" class="task-checkbox">
-                <div class="task-content">
-                    <div class="task-title">過去服務單位</div>
-                    <div class="task-note">1.ICON按鈕放大 ， [+號] icon按鈕 與 [垃圾桶] 需要放大。 </div>
-                    <div class="task-note">2.至今checkbox會掉下來。 </div>
-
-                    <div class="show-images-btn">查看圖片</div>
-                </div>
-            </li>
-
-            <li class="task-item">
-                <div class="task-index"></div>
-                <input type="checkbox" class="task-checkbox">
-                <div class="task-content">
-                    <div class="task-title">直接點擊送出申請按鈕，會看到所有必填欄位警示</div>
-                    <div class="task-note">可能需要協助查看/修改這個頁面必填位置(高度間距是否正常)，以及會不會影響到其他項目畫面，對這塊你們可能會比較敏銳，謝謝。</div>
-
-                    <div class="show-images-btn">查看圖片</div>
-                </div>
-            </li>
+        <div class="tabs">
+            <a href="?tab=2025-12-11" class="tab" data-tab="2025-12-11">2025/12/11</a>
+            <a href="?tab=2025-12-18" class="tab" data-tab="2025-12-18">2025/12/18</a>
+        </div>
 
 
-            <li class="task-item">
-                <div class="task-index"></div>
-                <input type="checkbox" class="task-checkbox">
-                <div class="task-content">
-                    <div class="task-title">訓練專長(多選)</div>
-                    <div class="task-note">原本為單層改為多層結構，有跑版再請協助。</div>
+        <!-- ===== 2025/12/11 ===== -->
+        <div class="tab-content" data-tab="2025-12-11">
+            <strong class="description-title">說明01：[PTFIT網站]教練註冊頁面，<a href="https://www.ptfit.pro/coach/register"
+                    target="_blank">連結頁面</a>。</strong>
+            <ul class="task-list">
 
-                    <div class="show-images-btn">查看圖片</div>
-                </div>
-            </li>
+                <!--  001  -->
+                <li class="task-item" data-task-id="001" data-status="done">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">過去服務單位</div>
+                        <div class="task-note">1.ICON按鈕放大 ， [+號] icon按鈕 與 [垃圾桶] 需要放大。 </div>
+                        <div class="task-note">2.至今checkbox會掉下來。 </div>
 
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
 
-        </ul>
+                <li class="task-item" data-task-id="001" data-status="done">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">直接點擊送出申請按鈕，會看到所有必填欄位警示</div>
+                        <div class="task-note">可能需要協助查看/修改這個頁面必填位置(高度間距是否正常)，以及會不會影響到其他項目畫面，對這塊你們可能會比較敏銳，謝謝。</div>
 
-
-        <strong class="description-title">說明02：[PTFIT網站]教練內頁頁面，<a href="https://pt2.icisco.com.tw/pt-class/kuma"
-                class="task-list" target="_blank">連結頁面</a>。</strong>
-
-        <ul class="task-list" id="taskList">
-            <!--  004  -->
-            <li class="task-item">
-                <div class="task-index"></div>
-                <input type="checkbox" class="task-checkbox">
-                <div class="task-content">
-                    <div class="task-title">教練內頁</div>
-                    <div class="task-note">輪播圖旁邊的課程類型，如果品項多會掉行文字會裁到</div>
-
-                    <div class="show-images-btn">查看圖片</div>
-                </div>
-            </li>
-
-        </ul>
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
 
 
-        <strong class="description-title">說明03：[PTFIT網站]教練列表頁面，<a href="https://pt2.icisco.com.tw/pt-class"
-                class="task-list" target="_blank">連結頁面</a>。</strong>
+                <li class="task-item" data-task-id="003" data-status="done">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">訓練專長(多選)</div>
+                        <div class="task-note">原本為單層改為多層結構，有跑版再請協助。</div>
 
-        <ul class="task-list" id="taskList">
-            <!--  004  -->
-            <li class="task-item">
-                <div class="task-index"></div>
-                <input type="checkbox" class="task-checkbox">
-                <div class="task-content">
-                    <div class="task-title">教練列表頁面</div>
-                    <div class="task-note">課程類型，如果品項多會掉行文字會裁到</div>
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
 
-                    <div class="show-images-btn">查看圖片</div>
-                </div>
-            </li>
 
-        </ul>
+            </ul>
+
+            <strong class="description-title">說明02：[PTFIT網站]教練內頁頁面，<a href="https://www.ptfit.pro/pt-class/kuma"
+                    class="task-list" target="_blank">連結頁面</a>。</strong>
+
+            <ul class="task-list">
+                <!--  004  -->
+                <li class="task-item" data-task-id="004" data-status="done">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">教練內頁</div>
+                        <div class="task-note">輪播圖旁邊的課程類型，如果品項多會掉行文字會裁到</div>
+
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
+
+            </ul>
+
+
+            <strong class="description-title">說明03：[PTFIT網站]教練列表頁面，<a href="https://www.ptfit.pro/pt-class"
+                    class="task-list" target="_blank">連結頁面</a>。</strong>
+
+            <ul class="task-list">
+                <!--  005  -->
+                <li class="task-item" data-task-id="005" data-status="done">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">教練列表頁面</div>
+                        <div class="task-note">課程類型，如果品項多會掉行文字會裁到</div>
+
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="tab-content" data-tab="2025-12-18">
+            <strong class="description-title">說明01：[PTFIT網站]教練註冊頁面，<a href="https://www.ptfit.pro/coach/register"
+                    class="task-list" target="_blank">連結頁面</a>。</strong>
+
+            <ul class="task-list">
+                <!--  006  -->
+                <li class="task-item" data-task-id="001">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">GOOGLE驗證位置</div>
+                        <div class="task-note">GOOGLE驗證位置，跑版可能再麻煩協助了，謝謝。</div>
+
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+
+
 
 
         <button class="btn" id="resetBtn">清除所有紀錄</button>
@@ -279,37 +146,63 @@
 </body>
 
 </html>
-
-
-
 <script>
-    /* 自動序號 */
-    function autoIndex() {
-        document.querySelectorAll(".task-item").forEach((item, i) => {
-            item.querySelector(".task-index").textContent =
-                String(i + 1).padStart(3, "0");
+    /* ================= 共用工具 ================= */
+
+    function getCurrentTab() {
+        return new URLSearchParams(location.search).get("tab") || "2025-12-11";
+    }
+
+    function getStorageKey() {
+        return "modify_tasks_local_" + getCurrentTab();
+    }
+
+    /* ================= Tabs ================= */
+
+    function initTabs() {
+        const tab = getCurrentTab();
+
+        document.querySelectorAll(".tab").forEach(t => {
+            t.classList.toggle("active", t.dataset.tab === tab);
+        });
+
+        document.querySelectorAll(".tab-content").forEach(c => {
+            c.classList.toggle("active", c.dataset.tab === tab);
         });
     }
 
-    /* 儲存勾選狀態 */
-    const STORAGE_KEY = "modify_tasks_local";
+    /* ================= 畫面序號（可重算） ================= */
+
+    function autoIndex() {
+        document
+            .querySelectorAll(".tab-content.active .task-item")
+            .forEach((item, i) => {
+                item.querySelector(".task-index").textContent =
+                    String(i + 1).padStart(3, "0");
+            });
+    }
+
+    /* ================= Checkbox / Storage ================= */
 
     function saveStatus() {
-        const arr = [];
-        document.querySelectorAll(".task-checkbox").forEach(cb => {
-            arr.push(cb.checked ? 1 : 0);
-        });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+        const data = [];
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach(cb => data.push(cb.checked ? 1 : 0));
+
+        localStorage.setItem(getStorageKey(), JSON.stringify(data));
         updateUI();
     }
 
     function loadStatus() {
-        const data = localStorage.getItem(STORAGE_KEY);
-        if (!data) return;
-        const arr = JSON.parse(data);
-        document.querySelectorAll(".task-checkbox").forEach((cb, i) => {
-            cb.checked = arr[i] === 1;
-        });
+        const raw = localStorage.getItem(getStorageKey());
+        if (!raw) return;
+
+        const data = JSON.parse(raw);
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach((cb, i) => cb.checked = data[i] === 1);
+
         updateUI();
     }
 
@@ -321,45 +214,61 @@
     }
 
     function resetAll() {
-        localStorage.removeItem(STORAGE_KEY);
-        document.querySelectorAll(".task-checkbox").forEach(cb => cb.checked = false);
+        localStorage.removeItem(getStorageKey());
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach(cb => cb.checked = false);
         updateUI();
     }
 
-    /* ---------------------- 自動偵測圖片 ---------------------- */
-    /* 檢查圖片是否存在 */
-    function checkImageExists(url) {
-        return fetch(url, { method: "HEAD" }).then(res => res.ok).catch(() => false);
+    /* ================= HTML done 狀態同步 ================= */
+
+    function syncCheckboxWithHtmlStatus() {
+        document
+            .querySelectorAll(".task-item[data-status='done']")
+            .forEach(item => {
+                const cb = item.querySelector(".task-checkbox");
+                if (!cb) return;
+                cb.checked = true;
+                item.classList.add("completed");
+            });
     }
 
-    /* 依序尋找圖片（最多10張） */
-    async function loadImagesForTask(index) {
-        const prefix = String(index + 1).padStart(3, "0"); // 001
-        const exts = ["jpg", "png", "jpeg"];
-        const maxCount = 10;
+    /* ================= 圖片偵測（YYYYMMDD-taskId-n.png） ================= */
 
+    function checkImageExists(url) {
+        return fetch(url, { method: "HEAD" })
+            .then(res => res.ok)
+            .catch(() => false);
+    }
+
+    function getTabDateForItem(item) {
+        const tab = item.closest(".tab-content")?.dataset.tab;
+        return tab ? tab.replaceAll("-", "") : "";
+    }
+
+    async function loadImagesForTask(item) {
+        const taskId = item.dataset.taskId;
+        if (!taskId) return [];
+
+        const date = getTabDateForItem(item);
+        const maxCount = 10;
         const images = [];
 
         for (let i = 1; i <= maxCount; i++) {
-            let found = false;
-
-            for (let ext of exts) {
-                const path = `img/${prefix}-${i}.${ext}`;
-                const ok = await checkImageExists(path);
-                if (ok) {
-                    images.push(path);
-                    found = true;
-                    break;
-                }
+            const path = `img/${date}-${taskId}-${i}.png`;
+            const ok = await checkImageExists(path);
+            if (ok) {
+                images.push(path);
+            } else {
+                break;
             }
-
-            if (!found) break; // 該序號沒有更多圖片
         }
-
         return images;
     }
 
-    /* ---------------------- Lightbox ---------------------- */
+    /* ================= Lightbox ================= */
+
     let currentImages = [];
     let currentIndex = 0;
 
@@ -379,7 +288,6 @@
     function showPrev() {
         currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
         document.getElementById("lightboxImage").src = currentImages[currentIndex];
-
         updateCounter();
         updateFilename();
     }
@@ -387,48 +295,47 @@
     function showNext() {
         currentIndex = (currentIndex + 1) % currentImages.length;
         document.getElementById("lightboxImage").src = currentImages[currentIndex];
-
         updateCounter();
         updateFilename();
     }
-    /* ---------------------- 初始化 ---------------------- */
 
     function updateCounter() {
-        const counter = document.getElementById("lightboxCounter");
-        counter.textContent = (currentIndex + 1) + " / " + currentImages.length;
+        document.getElementById("lightboxCounter").textContent =
+            `${currentIndex + 1} / ${currentImages.length}`;
     }
 
     function updateFilename() {
-        const filenameBox = document.getElementById("lightboxFilename");
-        const fullPath = currentImages[currentIndex];
-
-        const filename = fullPath.split("/").pop(); // 抓取檔名
-        filenameBox.textContent = filename;
+        document.getElementById("lightboxFilename").textContent =
+            currentImages[currentIndex].split("/").pop();
     }
 
-    document.addEventListener("DOMContentLoaded", async () => {
+    /* ================= 初始化 ================= */
 
+    document.addEventListener("DOMContentLoaded", () => {
+
+        initTabs();
         autoIndex();
+        syncCheckboxWithHtmlStatus();
         loadStatus();
 
+        /* checkbox */
         document.querySelectorAll(".task-checkbox").forEach(cb => {
             cb.addEventListener("change", saveStatus);
         });
 
-        const items = document.querySelectorAll(".task-item");
-        const btns = document.querySelectorAll(".show-images-btn");
+        /* 圖片按鈕 */
+        const items = document.querySelectorAll(".tab-content.active .task-item");
 
-        btns.forEach((btn, index) => {
-            btn.addEventListener("click", async () => {
-                const imgs = await loadImagesForTask(index);
-                if (imgs.length > 0) {
-                    openLightbox(imgs);
+        items.forEach(item => {
+            const btn = item.querySelector(".show-images-btn");
+            if (!btn) return;
+
+            loadImagesForTask(item).then(imgs => {
+                if (imgs.length === 0) {
+                    btn.style.display = "none";
+                    return;
                 }
-            });
-
-            /* 若該項目沒有圖片 → 隱藏按鈕 */
-            loadImagesForTask(index).then(imgs => {
-                if (imgs.length === 0) btn.style.display = "none";
+                btn.addEventListener("click", () => openLightbox(imgs));
             });
         });
 
