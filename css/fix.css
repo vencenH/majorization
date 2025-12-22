@@ -237,3 +237,67 @@
  .tab-content.active {
      display: block;
  }
+
+
+ .feature-tag {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     padding: 12px 16px;
+     border-radius: 10px;
+     background: linear-gradient(135deg, #f5f9ff, #eef4ff);
+     border: 1px solid #dbe6ff;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+     max-width: fit-content;
+ }
+
+ .tag-role {
+     padding: 4px 10px;
+     border-radius: 999px;
+     background-color: #2563eb;
+     color: #ffffff;
+     font-size: 12px;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     margin-right: 5px;
+
+ }
+
+ .tag-title {
+     font-size: 14px;
+     color: #1f2937;
+     font-weight: 600;
+ }
+
+ .tag-link {
+     font-size: 13px;
+     color: #2563eb;
+     text-decoration: none;
+     font-weight: 500;
+     transition: color 0.2s ease;
+ }
+
+ .tag-link:hover {
+     color: #1e40af;
+     text-decoration: underline;
+ }
+
+
+ /* 設計專用樣式 */
+ .feature-tag.design {
+     background: linear-gradient(135deg, #fff7ed, #ffedd5);
+     border: 1px solid #fed7aa;
+ }
+
+ .tag-role.design {
+     background-color: #f97316;
+     /* 設計橘 */
+ }
+
+ .feature-tag.design .tag-link {
+     color: #ea580c;
+ }
+
+ .feature-tag.design .tag-link:hover {
+     color: #c2410c;
+ }
