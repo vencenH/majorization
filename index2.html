@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改項目清單</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="css/fix.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>調整項目清單</h1>
+
+
+        <div class="tabs">
+            <a href="?tab=2026-01-01" class="tab" data-tab="2026-01-01">2026/01/01</a>
+
+        </div>
+
+
+        <!-- ===== 2026/01/01 ===== -->
+        <div class="tab-content" data-tab="2026-01-01">
+            <strong class="description-title"><span class="tag-role">前端</span>說明01：[PTFIT網站]影片單元頁面，<a
+                    href="https://www.ptfit.pro/video" target="_blank">連結頁面</a>。</strong>
+            <ul class="task-list">
+
+                <!--  001  -->
+                <li class="task-item" data-task-id="001">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">[影片單元]列表影片圖片黑邊問題，及圖片完整度(被裁掉問題)</div>
+                        <div class="task-note"></div>
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
+
+
+            </ul>
+
+            <strong class="description-title"><span class="tag-role">前端</span>說明02：[PTFIT網站]首頁影片區塊頁面，<a
+                    href="https://www.ptfit.pro/" class="task-list" target="_blank">連結頁面</a>。</strong>
+
+            <ul class="task-list">
+                <!--  002  -->
+                <li class="task-item" data-task-id="002">
+                    <div class="task-index"></div>
+                    <input type="checkbox" class="task-checkbox">
+                    <div class="task-content">
+                        <div class="task-title">[首頁]影片單元區塊圖片黑邊問題，及圖片完整度(被裁掉問題)</div>
+                        <div class="task-note"></div>
+                        <div class="show-images-btn">查看圖片</div>
+                    </div>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+
+
+
+        <button class="btn" id="resetBtn">清除所有紀錄</button>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <div class="lightbox-close">×</div>
+        <div class="lightbox-controls">
+            <div class="lightbox-btn" id="prevBtn">‹</div>
+            <div class="lightbox-btn" id="nextBtn">›</div>
+        </div>
+        <img id="lightboxImage">
+        <div id="lightboxCounter"></div>
+        <div id="lightboxFilename"></div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    /* ================= 共用工具 ================= */
+
+    function getCurrentTab() {
+        return new URLSearchParams(location.search).get("tab") || "2025-12-11";
+    }
+
+    function getStorageKey() {
+        return "modify_tasks_local_" + getCurrentTab();
+    }
+
+    /* ================= Tabs ================= */
+
+    function initTabs() {
+        const tab = getCurrentTab();
+
+        document.querySelectorAll(".tab").forEach(t => {
+            t.classList.toggle("active", t.dataset.tab === tab);
+        });
+
+        document.querySelectorAll(".tab-content").forEach(c => {
+            c.classList.toggle("active", c.dataset.tab === tab);
+        });
+    }
+
+    /* ================= 畫面序號（可重算） ================= */
+
+    function autoIndex() {
+        document
+            .querySelectorAll(".tab-content.active .task-item")
+            .forEach((item, i) => {
+                item.querySelector(".task-index").textContent =
+                    String(i + 1).padStart(3, "0");
+            });
+    }
+
+    /* ================= Checkbox / Storage ================= */
+
+    function saveStatus() {
+        const data = [];
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach(cb => data.push(cb.checked ? 1 : 0));
+
+        localStorage.setItem(getStorageKey(), JSON.stringify(data));
+        updateUI();
+    }
+
+    function loadStatus() {
+        const raw = localStorage.getItem(getStorageKey());
+        if (!raw) return;
+
+        const data = JSON.parse(raw);
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach((cb, i) => cb.checked = data[i] === 1);
+
+        updateUI();
+    }
+
+    function updateUI() {
+        document.querySelectorAll(".task-item").forEach(item => {
+            const cb = item.querySelector(".task-checkbox");
+            item.classList.toggle("completed", cb.checked);
+        });
+    }
+
+    function resetAll() {
+        localStorage.removeItem(getStorageKey());
+        document
+            .querySelectorAll(".tab-content.active .task-checkbox")
+            .forEach(cb => cb.checked = false);
+        updateUI();
+    }
+
+    /* ================= HTML done 狀態同步 ================= */
+
+    function syncCheckboxWithHtmlStatus() {
+        document
+            .querySelectorAll(".task-item[data-status='done']")
+            .forEach(item => {
+                const cb = item.querySelector(".task-checkbox");
+                if (!cb) return;
+                cb.checked = true;
+                item.classList.add("completed");
+            });
+    }
+
+    /* ================= 圖片偵測（YYYYMMDD-taskId-n.png） ================= */
+
+    function checkImageExists(url) {
+        return fetch(url, { method: "HEAD" })
+            .then(res => res.ok)
+            .catch(() => false);
+    }
+
+    function getTabDateForItem(item) {
+        const tab = item.closest(".tab-content")?.dataset.tab;
+        return tab ? tab.replaceAll("-", "") : "";
+    }
+
+    async function loadImagesForTask(item) {
+        const taskId = item.dataset.taskId;
+        if (!taskId) return [];
+
+        const date = getTabDateForItem(item);
+        const maxCount = 10;
+        const images = [];
+
+        for (let i = 1; i <= maxCount; i++) {
+            const path = `img/${date}-${taskId}-${i}.png`;
+            const ok = await checkImageExists(path);
+            if (ok) {
+                images.push(path);
+            } else {
+                break;
+            }
+        }
+        return images;
+    }
+
+    /* ================= Lightbox ================= */
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(images, start = 0) {
+        currentImages = images;
+        currentIndex = start;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+        document.getElementById("lightbox").style.display = "flex";
+        updateCounter();
+        updateFilename();
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+        updateCounter();
+        updateFilename();
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        document.getElementById("lightboxImage").src = currentImages[currentIndex];
+        updateCounter();
+        updateFilename();
+    }
+
+    function updateCounter() {
+        document.getElementById("lightboxCounter").textContent =
+            `${currentIndex + 1} / ${currentImages.length}`;
+    }
+
+    function updateFilename() {
+        document.getElementById("lightboxFilename").textContent =
+            currentImages[currentIndex].split("/").pop();
+    }
+
+    /* ================= 初始化 ================= */
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        initTabs();
+        autoIndex();
+        syncCheckboxWithHtmlStatus();
+        loadStatus();
+
+        /* checkbox */
+        document.querySelectorAll(".task-checkbox").forEach(cb => {
+            cb.addEventListener("change", saveStatus);
+        });
+
+        /* 圖片按鈕 */
+        const items = document.querySelectorAll(".tab-content.active .task-item");
+
+        items.forEach(item => {
+            const btn = item.querySelector(".show-images-btn");
+            if (!btn) return;
+
+            loadImagesForTask(item).then(imgs => {
+                if (imgs.length === 0) {
+                    btn.style.display = "none";
+                    return;
+                }
+                btn.addEventListener("click", () => openLightbox(imgs));
+            });
+        });
+
+        document.getElementById("resetBtn").onclick = resetAll;
+        document.querySelector(".lightbox-close").onclick = closeLightbox;
+        document.getElementById("prevBtn").onclick = showPrev;
+        document.getElementById("nextBtn").onclick = showNext;
+
+        document.getElementById("lightbox").onclick = e => {
+            if (e.target.id === "lightbox") closeLightbox();
+        };
+
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+        });
+    });
+</script>
