@@ -1,229 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-<meta charset="UTF-8">
-<title>AI 行銷系統成本估算</title>
+    <meta charset="UTF-8">
+    <title>AI 行銷系統成本估算</title>
 
-<style>
-body{
-    font-family: "Segoe UI", Arial, sans-serif;
-    background:#f5f6f8;
-    padding:40px;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:35px;
-    border-radius:10px;
-    box-shadow:0 6px 16px rgba(0,0,0,0.08);
-}
-
-h2{
-    margin-bottom:25px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    background:#2c3e50;
-    color:white;
-    padding:12px;
-    text-align:left;
-}
-
-td{
-    padding:12px;
-    border-bottom:1px solid #e5e5e5;
-}
-
-tr:nth-child(even){
-    background:#fafafa;
-}
-
-.total{
-    font-weight:bold;
-    background:#eef6ff;
-}
-
-.section{
-    margin-top:35px;
-}
-
-.note{
-    margin-top:20px;
-    color:#444;
-    line-height:1.7;
-}
-
-.highlight{
-    font-weight:bold;
-}
-
-.arch{
-    background:#f7fbff;
-    padding:18px;
-    border-radius:6px;
-    margin-top:15px;
-    font-family:monospace;
-    line-height:1.6;
-}
-</style>
+    <style>
+        body{
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:#f5f6f8;
+            padding:40px;
+        }
+        
+        .container{
+            max-width:1100px;
+            margin:auto;
+            background:white;
+            padding:35px;
+            border-radius:10px;
+            box-shadow:0 6px 16px rgba(0,0,0,0.08);
+        }
+        
+        h2{
+            margin-bottom:25px;
+        }
+        
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+        
+        th{
+            background:#2c3e50;
+            color:white;
+            padding:12px;
+            text-align:left;
+        }
+        
+        td{
+            padding:12px;
+            border-bottom:1px solid #e5e5e5;
+        }
+        
+        tr:nth-child(even){
+            background:#fafafa;
+        }
+        
+        .total{
+            font-weight:bold;
+            background:#eef6ff;
+        }
+        
+        .section{
+            margin-top:35px;
+        }
+        
+        .note{
+            margin-top:20px;
+            color:#444;
+            line-height:1.7;
+        }
+        
+        .highlight{
+            font-weight:bold;
+        }
+        
+        .arch{
+            background:#f7fbff;
+            padding:18px;
+            border-radius:6px;
+            margin-top:15px;
+            font-family:monospace;
+            line-height:1.6;
+        }
+    </style>
 </head>
 
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h2>AI 行銷系統成本估算（自架方案）</h2>
+        <h2>AI 行銷系統成本估算（自架方案）</h2>
 
-<table>
-<thead>
-<tr>
-<th>項目類別</th>
-<th>推薦方案</th>
-<th>預估費用（美金）</th>
-<th>預估費用（台幣）</th>
-<th>備註</th>
-</tr>
-</thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目類別</th>
+                    <th>推薦方案</th>
+                    <th>預估費用（美金）</th>
+                    <th>預估費用（台幣）</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
 
-<tbody>
+            <tbody>
 
-<tr>
-<td>AI 大腦 (API)</td>
-<td>Google Gemini API</td>
-<td>$50 ~ $200</td>
-<td>約 NT$1,600 ~ NT$6,400</td>
-<td>主要 AI 模型，用於內容生成、分析、AI Agent 任務（依實際使用量計費）</td>
-</tr>
+                <tr>
+                    <td>AI 大腦 (API)</td>
+                    <td>Google Gemini API</td>
+                    <td>$50 ~ $200</td>
+                    <td>約 NT$1,600 ~ NT$6,400</td>
+                    <td>主要 AI 模型，用於內容生成、分析、AI Agent 任務（依實際使用量計費）</td>
+                </tr>
 
-<tr>
-<td>自動化流程</td>
-<td>n8n Automation Engine</td>
-<td>€20 / 月 或 Self-host $0</td>
-<td>約 NT$700 或 $0</td>
-<td>用於串接 AI、API、自動化流程、排程任務、Agent Workflow</td>
-</tr>
+                <tr>
+                    <td>自動化流程</td>
+                    <td>n8n Automation Engine</td>
+                    <td>€20 / 月 或 Self-host $0</td>
+                    <td>約 NT$700 或 $0</td>
+                    <td>用於串接 AI、API、自動化流程、排程任務、Agent Workflow</td>
+                </tr>
 
-<tr>
-<td>圖像生成</td>
-<td>Midjourney / Flux API</td>
-<td>$20 ~ $30</td>
-<td>約 NT$640 ~ NT$960</td>
-<td>用於廣告素材、社群圖片、行銷視覺生成</td>
-</tr>
+                <tr>
+                    <td>圖像生成</td>
+                    <td>Midjourney / Flux API</td>
+                    <td>$20 ~ $30</td>
+                    <td>約 NT$640 ~ NT$960</td>
+                    <td>用於廣告素材、社群圖片、行銷視覺生成</td>
+                </tr>
 
-<tr>
-<td>系統平台</td>
-<td>自建後台 (現有網站系統)</td>
-<td>$0</td>
-<td>$0</td>
-<td>管理使用者、部門、客戶、workflow、AI agent、未來商品化平台</td>
-</tr>
+                <tr>
+                    <td>系統平台</td>
+                    <td>自建後台 (現有網站系統)</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                    <td>管理使用者、部門、客戶、workflow、AI agent、未來商品化平台</td>
+                </tr>
 
-<tr>
-<td>數據入口</td>
-<td>MySQL（既有主機）</td>
-<td>$0</td>
-<td>$0</td>
-<td>存放 Client Context、Prompt Template、Workflow 設定、系統資料</td>
-</tr>
+                <tr>
+                    <td>數據入口</td>
+                    <td>MySQL（既有主機）</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                    <td>存放 Client Context、Prompt Template、Workflow 設定、系統資料</td>
+                </tr>
 
-<tr>
-<td>向量資料庫</td>
-<td>MySQL + Context Query（初期）</td>
-<td>$0</td>
-<td>$0</td>
-<td>以資料 Context + Prompt 為主，後續可升級 Vector DB</td>
-</tr>
+                <tr>
+                    <td>向量資料庫</td>
+                    <td>MySQL + Context Query（初期）</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                    <td>以資料 Context + Prompt 為主，後續可升級 Vector DB</td>
+                </tr>
 
-<tr>
-<td>Server</td>
-<td>現有主機 / VPS</td>
-<td>依目前主機成本</td>
-<td>依目前主機成本</td>
-<td>利用現有主機資源，降低額外雲端成本</td>
-</tr>
+                <tr>
+                    <td>Server</td>
+                    <td>現有主機 / VPS</td>
+                    <td>依目前主機成本</td>
+                    <td>依目前主機成本</td>
+                    <td>利用現有主機資源，降低額外雲端成本</td>
+                </tr>
 
-<tr class="total">
-<td>合計預估</td>
-<td></td>
-<td>$70 ~ $250</td>
-<td>約 NT$2,200 ~ NT$8,000</td>
-<td>主要成本來自 AI API 使用量</td>
-</tr>
+                <tr class="total">
+                    <td>合計預估</td>
+                    <td></td>
+                    <td>$70 ~ $250</td>
+                    <td>約 NT$2,200 ~ NT$8,000</td>
+                    <td>主要成本來自 AI API 使用量</td>
+                </tr>
 
-</tbody>
-</table>
-
-
-<div class="section">
-
-<h3>方案優勢</h3>
-
-<div class="note">
-
-<span class="highlight">1. 成本控制</span><br>
-採用自建平台 + Automation Engine 架構，可避免大量 SaaS 授權費，
-主要成本僅為 AI API 使用量，能依實際需求彈性控制。<br><br>
-
-<span class="highlight">2. 系統可控性高</span><br>
-核心平台由公司自行開發與管理，
-資料、流程、客戶資訊與 AI 使用方式皆可完全掌握，
-能依公司營運需求快速調整系統功能與 AI workflow。<br><br>
-
-<span class="highlight">3. 未來商品化潛力</span><br>
-本架構採用「平台 + automation engine」設計，
-未來可發展為 AI Marketing Platform，
-將 AI workflow、Agent、行銷工具模組化，
-提供客戶或其他企業使用，具備 SaaS 商品化潛力。<br><br>
-
-<span class="highlight">4. 部門導入學習成本低</span><br>
-各部門僅需透過後台操作既有 workflow，
-AI 與 automation 由系統統一管理，
-降低技術門檻並減少教育訓練成本。<br><br>
-
-<span class="highlight">5. 系統擴充性高</span><br>
-未來可整合更多 AI 模型（Claude / GPT / 其他模型）、
-新增 Vector Database、AI Agent 協作、數據分析系統，
-不受單一雲端平台限制。<br><br>
-
-<span class="highlight">6. 架構彈性</span><br>
-n8n 僅作為 Automation Engine，
-核心平台與資料系統獨立，
-未來可依需求替換 automation / AI 技術。
-
-</div>
-
-</div>
+            </tbody>
+        </table>
 
 
-<div class="section">
+        <div class="section">
 
-<h3>系統架構概念</h3>
+            <h3>方案優勢</h3>
 
-<div class="arch">
-管理後台平台<br>
-↓<br>
-Workflow Router / 任務管理<br>
-↓<br>
-n8n Automation Engine<br>
-↓<br>
-AI API (Gemini)<br>
-↓<br>
-MySQL Data / Client Context
-</div>
+            <div class="note">
 
-</div>
+                <span class="highlight">1. 成本控制</span>
+                <br> 採用自建平台 + Automation Engine 架構，可避免大量 SaaS 授權費， ，也比較能依實際需求彈性控制。
+                <br>
+                <br>
+
+                <span class="highlight">2. 系統可控性高</span>
+                <br> 核心平台由公司自行開發與管理， 資料、流程、客戶資訊與 AI 使用方式皆可完全掌握， 能依公司營運需求快速調整系統功能與 AI workflow。
+                <br>
+                <br>
+
+                <span class="highlight">3. 未來商品化潛力</span>
+                <br> 本架構採用「平台 + automation engine」設計， 未來可發展為 AI Marketing Platform，將 AI workflow、Agent、行銷工具模組化，提供客戶或其他企業使用，可控性高。
+                <br>
+                <br>
+
+                <span class="highlight">4. 部門導入學習成本低</span>
+                <br> 各部門僅需透過後台操作既有 workflow， AI 與 automation 由系統統一管理，降低技術門檻並減少教育訓練成本。
+                <br>
+                <br>
+
+                <span class="highlight">5. 系統擴充性高</span>
+                <br> 未來可整合更多 AI 模型（Claude / GPT / 其他模型）、新增 Vector Database、AI Agent 協作、數據分析系統，不受單一雲端平台限制。
+                <br>
+                <br>
+
+                <span class="highlight">6. 架構彈性</span>
+                <br> n8n 僅作為 Automation Engine，核心平台與資料系統獨立，未來可依需求替換 automation / AI 技術。
+            </div>
+
+        </div>
 
 
-</div>
+        <div class="section">
+
+            <h3>系統架構概念</h3>
+
+            <div class="arch">
+                管理後台平台
+                <br> ↓
+                <br> Workflow Router / 任務管理
+                <br> ↓
+                <br> n8n Automation Engine
+                <br> ↓
+                <br> AI API (Gemini)
+                <br> ↓
+                <br> MySQL Data / Client Context
+            </div>
+
+        </div>
+
+
+    </div>
 
 </body>
+
 </html>
