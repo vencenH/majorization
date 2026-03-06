@@ -6,72 +6,72 @@
     <title>AI 行銷系統成本估算</title>
 
     <style>
-        body{
+        body {
             font-family: "Segoe UI", Arial, sans-serif;
-            background:#f5f6f8;
-            padding:40px;
+            background: #f5f6f8;
+            padding: 40px;
         }
-        
-        .container{
-            max-width:1100px;
-            margin:auto;
-            background:white;
-            padding:35px;
-            border-radius:10px;
-            box-shadow:0 6px 16px rgba(0,0,0,0.08);
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         }
-        
-        h2{
-            margin-bottom:25px;
+
+        h2 {
+            margin-bottom: 25px;
         }
-        
-        table{
-            width:100%;
-            border-collapse:collapse;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        
-        th{
-            background:#2c3e50;
-            color:white;
-            padding:12px;
-            text-align:left;
+
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
         }
-        
-        td{
-            padding:12px;
-            border-bottom:1px solid #e5e5e5;
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e5e5;
         }
-        
-        tr:nth-child(even){
-            background:#fafafa;
+
+        tr:nth-child(even) {
+            background: #fafafa;
         }
-        
-        .total{
-            font-weight:bold;
-            background:#eef6ff;
+
+        .total {
+            font-weight: bold;
+            background: #eef6ff;
         }
-        
-        .section{
-            margin-top:35px;
+
+        .section {
+            margin-top: 35px;
         }
-        
-        .note{
-            margin-top:20px;
-            color:#444;
-            line-height:1.7;
+
+        .note {
+            margin-top: 20px;
+            color: #444;
+            line-height: 1.7;
         }
-        
-        .highlight{
-            font-weight:bold;
+
+        .highlight {
+            font-weight: bold;
         }
-        
-        .arch{
-            background:#f7fbff;
-            padding:18px;
-            border-radius:6px;
-            margin-top:15px;
-            font-family:monospace;
-            line-height:1.6;
+
+        .arch {
+            background: #f7fbff;
+            padding: 18px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-family: monospace;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -163,8 +163,8 @@
                 <tr class="total">
                     <td>合計預估</td>
                     <td></td>
-                    <td>$90 ~ $260 (可選:$149 ~ $319)</td>
-                    <td>約 NT$2,800 ~ NT$8,300 (可選:約 NT$4,700 ~ NT$10,200)</td>
+                    <td>$90 ~ $260 <BR>(可選:$149 ~ $319)</td>
+                    <td>約 NT$2,800 ~ NT$8,300 <BR>(可選:約 NT$4,700 ~ NT$10,200)</td>
                     <td>主要成本來自 AI API 使用量與圖像生成需求，實際費用會依使用頻率與 AI 任務量浮動</td>
                 </tr>
 
@@ -190,7 +190,7 @@
                 <br>
                 <br>
 
-                <span class="highlight">3. 未來商品化潛力</span>
+                <span class="highlight">3. 方便未來商品化潛力</span>
                 <br> 本架構採用「平台 + automation engine」設計， 未來可發展為 AI Marketing Platform， 將 AI workflow、Agent、行銷工具模組化， 提供客戶或其他企業使用，具備 SaaS 商品化潛力。
 
                 <br>
@@ -209,7 +209,7 @@
                 <br>
 
                 <span class="highlight">6. 架構彈性</span>
-                <br> n8n 僅作為 Automation Engine， 核心平台與資料系統獨立， 未來可依需求替換 automation / AI 技術。
+                <br> n8n 僅作為 Automation Engine 及 Ai Agent， 核心平台與資料系統獨立， 未來可依需求替換 automation / AI 技術。
 
                 <br>
                 <br>
@@ -227,19 +227,51 @@
             <h3>系統架構概念</h3>
 
             <div class="arch">
-                管理後台平台
-                <br> ↓
-                <br> Workflow Router / 任務管理
-                <br> ↓
-                <br> n8n Automation Engine
-                <br> ↓
-                <br> AI API (Gemini)
-                <br> ↓
-                <br> MySQL Data / Client Context
-                <br>
-                <br>（未來可擴充）
-                <br> ↓
-                <br> Dify AI Agent Layer
+
+                【系統管理層 System Platform Layer】
+                管理後台平台（Platform Backend）
+                - 使用者 / 部門 / 客戶管理
+                - Workflow 管理
+                - AI Agent 管理
+                - 系統設定與資料管理
+
+                ↓
+
+                【自動化與 Agent 層 Automation Layer】
+                n8n Automation Engine
+                - Workflow Automation
+                - AI Agent 任務流程
+                - API Integration
+                - 排程任務（Scheduler）
+                - 多系統資料串接
+
+                ↓
+
+                【AI 運算層 AI Processing Layer】
+                AI API（Gemini / 未來可擴充其他模型）
+                - 內容生成
+                - 行銷分析
+                - AI 任務處理
+                - Agent Decision
+
+                ↓
+
+                【資料與知識層 Data & Context Layer】
+                MySQL Data / Client Context
+                - Client Context（品牌資訊 / 行銷資料）
+                - Prompt Templates
+                - Workflow 設定資料
+                - Knowledge Data（提供 AI Context）
+
+                ↓
+
+                【未來擴充 AI 應用層（Optional）】
+                Dify AI Application Layer
+                - AI Agent 管理
+                - Knowledge Base
+                - Prompt 管理
+                - AI App / Chat Interface
+
             </div>
 
         </div>
