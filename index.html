@@ -101,7 +101,15 @@
                     <td>Google Gemini API</td>
                     <td>$50 ~ $200</td>
                     <td>約 NT$1,600 ~ NT$6,400</td>
-                    <td>主要 AI 模型，用於內容生成、分析、AI Agent 任務（依實際使用量計費）(或是到時候用什麼模型)</td>
+                    <td>主要 AI 模型，用於內容生成、分析、AI Agent 任務（依實際使用量計費，可依需求替換其他模型）</td>
+                </tr>
+
+                <tr>
+                    <td>AI Agent 平台（可選）</td>
+                    <td>Dify AI Platform</td>
+                    <td>$0（Self-host）</td>
+                    <td>$0</td>
+                    <td>可作為進階 AI Agent / Knowledge Base 平台，初期可不部署，若未來 AI Agent 或知識庫需求增加，可再導入</td>
                 </tr>
 
                 <tr>
@@ -116,7 +124,7 @@
                     <td>圖像生成</td>
                     <td>Midjourney / Flux API</td>
                     <td>$20 ~ $30</td>
-                    <td>約NT$960 ~ 以上</td>
+                    <td>約 NT$960 ~ 以上</td>
                     <td>用於廣告素材、社群圖片、行銷視覺生成</td>
                 </tr>
 
@@ -157,7 +165,7 @@
                     <td></td>
                     <td>$90 ~ $260</td>
                     <td>約 NT$2,800 ~ NT$8,300</td>
-                    <td>主要成本來自 AI API 使用量、研發agent及開創後台成本(實際費用會依 AI 使用頻率與圖像生成需求浮動，甚至更高)</td>
+                    <td>主要成本來自 AI API 使用量與圖像生成需求，實際費用會依使用頻率與 AI 任務量浮動</td>
                 </tr>
 
             </tbody>
@@ -171,32 +179,44 @@
             <div class="note">
 
                 <span class="highlight">1. 成本控制</span>
-                <br> 採用自建平台 + Automation Engine 架構，可避免大量 SaaS 授權費， ，也比較能依實際需求彈性控制。
+                <br> 採用自建平台 + Automation Engine 架構，可避免大量 SaaS 授權費， 主要成本集中於 AI API 使用量，可依需求彈性控制。
+
                 <br>
                 <br>
 
                 <span class="highlight">2. 系統可控性高</span>
-                <br> 核心平台由公司自行開發與管理， 資料、流程、客戶資訊與 AI 使用方式皆可完全掌握， 能依公司營運需求快速調整系統功能與 AI workflow。
+                <br> 核心平台由公司自行開發與管理，資料、流程、客戶資訊與 AI 使用方式皆可完全掌握， 能依公司營運需求快速調整系統功能與 AI workflow。
+
                 <br>
                 <br>
 
                 <span class="highlight">3. 未來商品化潛力</span>
-                <br> 本架構採用「平台 + automation engine」設計， 未來可發展為 AI Marketing Platform，將 AI workflow、Agent、行銷工具模組化，提供客戶或其他企業使用，可控性高。
+                <br> 本架構採用「平台 + automation engine」設計， 未來可發展為 AI Marketing Platform， 將 AI workflow、Agent、行銷工具模組化， 提供客戶或其他企業使用，具備 SaaS 商品化潛力。
+
                 <br>
                 <br>
 
                 <span class="highlight">4. 部門導入學習成本低</span>
-                <br> 各部門僅需透過後台操作既有 workflow， AI 與 automation 由系統統一管理，降低技術門檻並減少教育訓練成本。
+                <br> 各部門僅需透過後台操作既有 workflow， AI 與 automation 由系統統一管理， 降低技術門檻並減少教育訓練成本。
+
                 <br>
                 <br>
 
                 <span class="highlight">5. 系統擴充性高</span>
-                <br> 未來可整合更多 AI 模型（Claude / GPT / 其他模型）、新增 Vector Database、AI Agent 協作、數據分析系統，不受單一雲端平台限制。
+                <br> 未來可整合更多 AI 模型（Claude / GPT / 其他模型）、 新增 Vector Database、AI Agent 協作、數據分析系統， 不受單一雲端平台限制。
+
                 <br>
                 <br>
 
                 <span class="highlight">6. 架構彈性</span>
-                <br> n8n 僅作為 Automation Engine，核心平台與資料系統獨立，未來可依需求替換 automation / AI 技術。
+                <br> n8n 僅作為 Automation Engine， 核心平台與資料系統獨立， 未來可依需求替換 automation / AI 技術。
+
+                <br>
+                <br>
+
+                <span class="highlight">7. AI 平台擴充彈性</span>
+                <br> 若未來需要更完整的 AI Agent 管理與知識庫系統， 可導入如 Dify 等 AI 平台作為上層管理工具。 目前系統架構已保留整合彈性， 避免初期導入過多系統造成維護與學習成本增加。
+
             </div>
 
         </div>
@@ -216,6 +236,10 @@
                 <br> AI API (Gemini)
                 <br> ↓
                 <br> MySQL Data / Client Context
+                <br>
+                <br>（未來可擴充）
+                <br> ↓
+                <br> Dify AI Agent Layer
             </div>
 
         </div>
