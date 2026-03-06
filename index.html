@@ -1,354 +1,155 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <title>修改項目清單</title>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="stylesheet" href="css/fix.css" />
+<meta charset="UTF-8">
+<title>AI 行銷系統成本估算</title>
+
+<style>
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#f7f7f7;
+    padding:40px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#2c3e50;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+.total{
+    font-weight:bold;
+    background:#eef6ff;
+}
+
+.note{
+    margin-top:20px;
+    color:#666;
+    font-size:14px;
+}
+</style>
 </head>
+
 
 <body>
 
-    <div class="container">
-        <h1>調整項目清單</h1>
+<div class="container">
 
+<h2>AI 行銷系統成本估算（自架方案）</h2>
 
-        <div class="tabs">
-			<a href="?tab=2026-01-06" class="tab" data-tab="2026-01-06">2026/01/06</a>
-        </div>
+<table>
+<thead>
+<tr>
+<th>項目類別</th>
+<th>推薦方案</th>
+<th>預估費用（美金）</th>
+<th>預估費用（台幣）</th>
+<th>備註</th>
+</tr>
+</thead>
 
+<tbody>
 
-        <!-- ===== 2026/01/01 ===== -->
-        <div class="tab-content" data-tab="2026-01-06">
-		
-		
-            <strong class="description-title"><span class="tag-role">前端</span>說明01：[PTFIT網站]HEAD，<a href="https://www.ptfit.pro" target="_blank">連結頁面</a>。</strong>
-            <ul class="task-list">
-                <!--  001  -->
-                <li class="task-item" data-task-id="001">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">HEAD的加入我們ICON調大，並且3個ICON頂部要齊高</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
+<tr>
+<td>AI 大腦 (API)</td>
+<td>Google Gemini API</td>
+<td>$50 ~ $200</td>
+<td>約 $1,600 ~ $6,400</td>
+<td>作為主要 AI 模型（內容生成 / 分析 / Agent 任務）</td>
+</tr>
 
-            <strong class="description-title"><span class="tag-role">前端</span>說明02：[PTFIT網站]加入我們頁面，<a
-                    href="https://www.ptfit.pro/coach/register" class="task-list" target="_blank">連結頁面</a>。</strong>
+<tr>
+<td>自動化流程</td>
+<td>n8n（Self-host）</td>
+<td>$0</td>
+<td>$0</td>
+<td>自架 workflow automation，用於串接 AI、排程、API</td>
+</tr>
 
-            <ul class="task-list">
-                <!--  002  -->
-                <li class="task-item" data-task-id="002">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">加入我們的標題跟※(必填)都要一致對齊置中</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
-			
-			<strong class="description-title"><span class="tag-role">前端</span>說明03：[PTFIT網站]加入我們頁面，<a
-                    href="https://www.ptfit.pro/coach/register" class="task-list" target="_blank">連結頁面</a>。</strong>
+<tr>
+<td>圖像生成</td>
+<td>Midjourney / Flux API</td>
+<td>$20 ~ $30</td>
+<td>約 $640 ~ $960</td>
+<td>用於廣告素材、社群圖片生成</td>
+</tr>
 
-            <ul class="task-list">
-                <!--  003  -->
-                <li class="task-item" data-task-id="003">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">Radio元件與Checkbox元件辨識度不足導致看起來大小不一，因checkbox有圓弧，看可否不更換元件，然後統一圓型且大小一致</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
+<tr>
+<td>系統平台</td>
+<td>自建後台 (現有網站系統)</td>
+<td>$0</td>
+<td>$0</td>
+<td>管理使用者 / 部門 / 客戶 / workflow</td>
+</tr>
 
-			<strong class="description-title"><span class="tag-role">前端</span>說明04：[PTFIT網站]加入我們頁面，<a
-                    href="https://www.ptfit.pro/coach/register" class="task-list" target="_blank">連結頁面</a>。</strong>
+<tr>
+<td>數據入口</td>
+<td>MySQL（既有主機）</td>
+<td>$0</td>
+<td>$0</td>
+<td>存放 client context / prompt template / workflow 設定</td>
+</tr>
 
-            <ul class="task-list">
-                <!--  004  -->
-                <li class="task-item" data-task-id="004">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">要填寫幾萬的欄位手機版不用這麼寬，這樣文字會斷行得很奇怪，請調整到適合的大小</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
+<tr>
+<td>向量資料庫</td>
+<td>MySQL + context 查詢（初期）</td>
+<td>$0</td>
+<td>$0</td>
+<td>初期不使用 Vector DB，後續可升級</td>
+</tr>
 
-			<strong class="description-title"><span class="tag-role">前端</span>說明05：[PTFIT網站]加入我們頁面，<a
-                    href="https://www.ptfit.pro/coach/register" class="task-list" target="_blank">連結頁面</a>。</strong>
+<tr>
+<td>基礎雲端</td>
+<td>現有主機 / VPS</td>
+<td>$0 ~ $20</td>
+<td>約 $0 ~ $640</td>
+<td>依現有主機資源使用</td>
+</tr>
 
-            <ul class="task-list">
-                <!--  005  -->
-                <li class="task-item" data-task-id="005">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">底部浮動按鈕卡到了版權宣告文字，再麻煩調整</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
-			
-			<strong class="description-title"><span class="tag-role">前端</span>說明06：[PTFIT網站]加入我們頁面，<a
-                    href="https://www.ptfit.pro/coach/register" class="task-list" target="_blank">連結頁面</a>。</strong>
+<tr class="total">
+<td>合計預估</td>
+<td></td>
+<td>$70 ~ $250</td>
+<td>約 NT$2,200 ~ NT$8,000</td>
+<td>成本主要為 AI API 使用量</td>
+</tr>
 
-            <ul class="task-list">
-                <!--  006  -->
-                <li class="task-item" data-task-id="006">
-                    <div class="task-index"></div>
-                    <input type="checkbox" class="task-checkbox">
-                    <div class="task-content">
-                        <div class="task-title">身高體重的單位顯示與輸入完成的jq套件有樣式重疊</div>
-                        <div class="task-note"></div>
-                        <div class="show-images-btn">查看圖片</div>
-                    </div>
-                </li>
-            </ul>
+</tbody>
+</table>
 
-        </div>
+<div class="note">
+備註：本方案採用「自建平台 + 自動化引擎」架構，以降低 SaaS 依賴與成本，並保留未來 AI Agent 系統擴充與商品化的彈性。
+</div>
 
-
-
-
-        <button class="btn" id="resetBtn">清除所有紀錄</button>
-
-    </div>
-
-    <!-- Lightbox -->
-    <div id="lightbox">
-        <div class="lightbox-close">×</div>
-        <div class="lightbox-controls">
-            <div class="lightbox-btn" id="prevBtn">‹</div>
-            <div class="lightbox-btn" id="nextBtn">›</div>
-        </div>
-        <img id="lightboxImage">
-        <div id="lightboxCounter"></div>
-        <div id="lightboxFilename"></div>
-    </div>
+</div>
 
 </body>
-
 </html>
-<script>
-    /* ================= 共用工具 ================= */
-
-    function getCurrentTab() {
-        return new URLSearchParams(location.search).get("tab") || "2026-01-06";
-    }
-
-    function getStorageKey() {
-        return "modify_tasks_local_" + getCurrentTab();
-    }
-
-    /* ================= Tabs ================= */
-
-    function initTabs() {
-        const tab = getCurrentTab();
-
-        document.querySelectorAll(".tab").forEach(t => {
-            t.classList.toggle("active", t.dataset.tab === tab);
-        });
-
-        document.querySelectorAll(".tab-content").forEach(c => {
-            c.classList.toggle("active", c.dataset.tab === tab);
-        });
-    }
-
-    /* ================= 畫面序號（可重算） ================= */
-
-    function autoIndex() {
-        document
-            .querySelectorAll(".tab-content.active .task-item")
-            .forEach((item, i) => {
-                item.querySelector(".task-index").textContent =
-                    String(i + 1).padStart(3, "0");
-            });
-    }
-
-    /* ================= Checkbox / Storage ================= */
-
-    function saveStatus() {
-        const data = [];
-        document
-            .querySelectorAll(".tab-content.active .task-checkbox")
-            .forEach(cb => data.push(cb.checked ? 1 : 0));
-
-        localStorage.setItem(getStorageKey(), JSON.stringify(data));
-        updateUI();
-    }
-
-    function loadStatus() {
-        const raw = localStorage.getItem(getStorageKey());
-        if (!raw) return;
-
-        const data = JSON.parse(raw);
-        document
-            .querySelectorAll(".tab-content.active .task-checkbox")
-            .forEach((cb, i) => cb.checked = data[i] === 1);
-
-        updateUI();
-    }
-
-    function updateUI() {
-        document.querySelectorAll(".task-item").forEach(item => {
-            const cb = item.querySelector(".task-checkbox");
-            item.classList.toggle("completed", cb.checked);
-        });
-    }
-
-    function resetAll() {
-        localStorage.removeItem(getStorageKey());
-        document
-            .querySelectorAll(".tab-content.active .task-checkbox")
-            .forEach(cb => cb.checked = false);
-        updateUI();
-    }
-
-    /* ================= HTML done 狀態同步 ================= */
-
-    function syncCheckboxWithHtmlStatus() {
-        document
-            .querySelectorAll(".task-item[data-status='done']")
-            .forEach(item => {
-                const cb = item.querySelector(".task-checkbox");
-                if (!cb) return;
-                cb.checked = true;
-                item.classList.add("completed");
-            });
-    }
-
-    /* ================= 圖片偵測（YYYYMMDD-taskId-n.png） ================= */
-
-    function checkImageExists(url) {
-        return fetch(url, { method: "HEAD" })
-            .then(res => res.ok)
-            .catch(() => false);
-    }
-
-    function getTabDateForItem(item) {
-        const tab = item.closest(".tab-content")?.dataset.tab;
-        return tab ? tab.replaceAll("-", "") : "";
-    }
-
-    async function loadImagesForTask(item) {
-        const taskId = item.dataset.taskId;
-        if (!taskId) return [];
-
-        const date = getTabDateForItem(item);
-        const maxCount = 10;
-        const images = [];
-
-        for (let i = 1; i <= maxCount; i++) {
-            const path = `img/${date}-${taskId}-${i}.png`;
-            const ok = await checkImageExists(path);
-            if (ok) {
-                images.push(path);
-            } else {
-                break;
-            }
-        }
-		
-		console.log(images);
-        return images;
-    }
-
-    /* ================= Lightbox ================= */
-
-    let currentImages = [];
-    let currentIndex = 0;
-
-    function openLightbox(images, start = 0) {
-        currentImages = images;
-        currentIndex = start;
-        document.getElementById("lightboxImage").src = currentImages[currentIndex];
-        document.getElementById("lightbox").style.display = "flex";
-        updateCounter();
-        updateFilename();
-    }
-
-    function closeLightbox() {
-        document.getElementById("lightbox").style.display = "none";
-    }
-
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        document.getElementById("lightboxImage").src = currentImages[currentIndex];
-        updateCounter();
-        updateFilename();
-    }
-
-    function showNext() {
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        document.getElementById("lightboxImage").src = currentImages[currentIndex];
-        updateCounter();
-        updateFilename();
-    }
-
-    function updateCounter() {
-        document.getElementById("lightboxCounter").textContent =
-            `${currentIndex + 1} / ${currentImages.length}`;
-    }
-
-    function updateFilename() {
-        document.getElementById("lightboxFilename").textContent =
-            currentImages[currentIndex].split("/").pop();
-    }
-
-    /* ================= 初始化 ================= */
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-        initTabs();
-        autoIndex();
-        syncCheckboxWithHtmlStatus();
-        loadStatus();
-
-        /* checkbox */
-        document.querySelectorAll(".task-checkbox").forEach(cb => {
-            cb.addEventListener("change", saveStatus);
-        });
-
-        /* 圖片按鈕 */
-        const items = document.querySelectorAll(".tab-content.active .task-item");
-
-        items.forEach(item => {
-            const btn = item.querySelector(".show-images-btn");
-            if (!btn) return;
-
-            loadImagesForTask(item).then(imgs => {
-                if (imgs.length === 0) {
-                    btn.style.display = "none";
-                    return;
-                }
-                btn.addEventListener("click", () => openLightbox(imgs));
-            });
-        });
-
-        document.getElementById("resetBtn").onclick = resetAll;
-        document.querySelector(".lightbox-close").onclick = closeLightbox;
-        document.getElementById("prevBtn").onclick = showPrev;
-        document.getElementById("nextBtn").onclick = showNext;
-
-        document.getElementById("lightbox").onclick = e => {
-            if (e.target.id === "lightbox") closeLightbox();
-        };
-
-        document.addEventListener("keydown", e => {
-            if (e.key === "Escape") closeLightbox();
-            if (e.key === "ArrowLeft") showPrev();
-            if (e.key === "ArrowRight") showNext();
-        });
-    });
-</script>
