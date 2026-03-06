@@ -66,12 +66,33 @@
         }
 
         .arch {
-            background: #f7fbff;
-            padding: 18px;
-            border-radius: 6px;
+            background: #f3f7fb;
+            border: 1px solid #d8e2ec;
+            border-left: 6px solid #4a90e2;
+            padding: 22px 26px;
+            border-radius: 8px;
             margin-top: 15px;
-            font-family: monospace;
-            line-height: 1.6;
+
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .arch-layer {
+            margin-bottom: 12px;
+        }
+
+        .arch-title {
+            font-weight: bold;
+            color: #1a4d8f;
+        }
+
+        .arch-arrow {
+            text-align: center;
+            color: #8aa1b4;
+            margin: 8px 0;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -228,49 +249,59 @@
 
             <div class="arch">
 
-                【系統管理層 System Platform Layer】
-                管理後台平台（Platform Backend）
-                - 使用者 / 部門 / 客戶管理
-                - Workflow 管理
-                - AI Agent 管理
-                - 系統設定與資料管理
+                <div class="arch-layer">
+                    <span class="arch-title">【系統管理層 System Platform Layer】</span><br>
+                    管理後台平台（Platform Backend）<br>
+                    - 使用者 / 部門 / 客戶管理<br>
+                    - Workflow 管理<br>
+                    - AI Agent 管理<br>
+                    - 系統設定與資料管理
+                </div>
 
-                ↓
+                <div class="arch-arrow">↓</div>
 
-                【自動化與 Agent 層 Automation Layer】
-                n8n Automation Engine
-                - Workflow Automation
-                - AI Agent 任務流程
-                - API Integration
-                - 排程任務（Scheduler）
-                - 多系統資料串接
+                <div class="arch-layer">
+                    <span class="arch-title">【自動化與 Agent 層 Automation Layer】</span><br>
+                    n8n Automation Engine<br>
+                    - Workflow Automation<br>
+                    - AI Agent 任務流程<br>
+                    - API Integration<br>
+                    - 排程任務（Scheduler）<br>
+                    - 多系統資料串接
+                </div>
 
-                ↓
+                <div class="arch-arrow">↓</div>
 
-                【AI 運算層 AI Processing Layer】
-                AI API（Gemini / 未來可擴充其他模型）
-                - 內容生成
-                - 行銷分析
-                - AI 任務處理
-                - Agent Decision
+                <div class="arch-layer">
+                    <span class="arch-title">【AI 運算層 AI Processing Layer】</span><br>
+                    AI API（Gemini / 未來可擴充其他模型）<br>
+                    - 內容生成<br>
+                    - 行銷分析<br>
+                    - AI 任務處理<br>
+                    - Agent Decision
+                </div>
 
-                ↓
+                <div class="arch-arrow">↓</div>
 
-                【資料與知識層 Data & Context Layer】
-                MySQL Data / Client Context
-                - Client Context（品牌資訊 / 行銷資料）
-                - Prompt Templates
-                - Workflow 設定資料
-                - Knowledge Data（提供 AI Context）
+                <div class="arch-layer">
+                    <span class="arch-title">【資料與知識層 Data & Context Layer】</span><br>
+                    MySQL Data / Client Context<br>
+                    - Client Context（品牌資訊 / 行銷資料）<br>
+                    - Prompt Templates<br>
+                    - Workflow 設定資料<br>
+                    - Knowledge Data（提供 AI Context）
+                </div>
 
-                ↓
+                <div class="arch-arrow">↓</div>
 
-                【未來擴充 AI 應用層（Optional）】
-                Dify AI Application Layer
-                - AI Agent 管理
-                - Knowledge Base
-                - Prompt 管理
-                - AI App / Chat Interface
+                <div class="arch-layer">
+                    <span class="arch-title">【未來擴充 AI 應用層 Optional】</span><br>
+                    Dify AI Application Layer<br>
+                    - AI Agent 管理<br>
+                    - Knowledge Base<br>
+                    - Prompt 管理<br>
+                    - AI App / Chat Interface
+                </div>
 
             </div>
 
